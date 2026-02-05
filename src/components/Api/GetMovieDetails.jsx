@@ -1,0 +1,13 @@
+export const getMovieDetails = async ({ params }) => {
+  const id = params.movieID;
+
+  try {
+    const response = await fetch(
+      `https://www.omdbapi.com/?i=${id}&apikey=${import.meta.env.VITE_API_KEY}`,
+    );
+    const fullData = await response.json();
+    return fullData;
+  } catch (error) {
+    console.log(error);
+  }
+};
